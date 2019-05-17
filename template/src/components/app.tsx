@@ -1,22 +1,22 @@
-import { Component, h } from "preact";
-import { Route, Router, RouterOnChangeArgs } from "preact-router";
+import { Component, h } from 'preact';
+import { Route, Router, RouterOnChangeArgs } from 'preact-router';
 
-import Home from "../routes/home";
-import Profile from "../routes/profile";
-import Header from "./header";
+import Home from '../routes/home';
+import Profile from '../routes/profile';
+import Header from './header';
 
-if ((module as any).hot) {
-    // tslint:disable-next-line:no-var-requires
-    require("preact/debug");
+// eslint-disable-next-line no-undef
+if ((module as NodeModule).hot) {
+    require('preact/debug');
 }
 
 export default class App extends Component {
     public currentUrl?: string;
-    public handleRoute = (e: RouterOnChangeArgs) => {
+    public handleRoute = (e: RouterOnChangeArgs): void => {
         this.currentUrl = e.url;
     };
 
-    public render() {
+    public render(): JSX.Element {
         return (
             <div id="app">
                 <Header />

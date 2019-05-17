@@ -1,5 +1,5 @@
-import { Component, h } from "preact";
-import * as style from "./style.css";
+import { Component, h } from 'preact';
+import * as style from './style.css';
 
 interface Props {
     user: string;
@@ -18,25 +18,26 @@ export default class Profile extends Component<Props, State> {
     public timer?: number;
 
     // gets called when this route is navigated to
-    public componentDidMount() {
+    public componentDidMount(): void {
         // start a timer for the clock:
         this.timer = window.setInterval(this.updateTime, 1000);
     }
 
     // gets called just before navigating away from the route
-    public componentWillUnmount() {
+    public componentWillUnmount(): void {
         clearInterval(this.timer);
     }
 
     // update the current time
-    public updateTime = () => {
+    public updateTime = (): void => {
         this.setState({ time: Date.now() });
     };
 
-    public increment = () => {
+    public increment = (): void => {
         this.setState({ count: this.state.count + 1 });
     };
-    public render({ user }: Props, { time, count }: State) {
+
+    public render({ user }: Props, { time, count }: State): JSX.Element {
         return (
             <div class={style.profile}>
                 <h1>Profile: {user}</h1>
@@ -45,7 +46,7 @@ export default class Profile extends Component<Props, State> {
                 <div>Current time: {new Date(time).toLocaleString()}</div>
 
                 <p>
-                    <button onClick={this.increment}>Click Me</button> Clicked{" "}
+                    <button onClick={this.increment}>Click Me</button> Clicked{' '}
                     {count} times.
                 </p>
             </div>
